@@ -1,2 +1,11 @@
 [
-]
+    {
+      "in": "komnata_b.mscz",
+      "out": [
+        "komnata_b.pdf",
+        "komnata_b.flac",
+        "komnata_b.mid"
+      ]
+    }
+  ]
+  
