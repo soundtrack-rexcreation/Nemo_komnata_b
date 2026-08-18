@@ -27,7 +27,8 @@ jobs:
           midi_filenames=$(jq -c 'reduce ([.[].out] | flatten) as $x ([]; . + $x) | map(select(ascii_downcase | endswith(".mid") or endswith(".midi")))' "$JOB_FILE")
           echo "midi=$midi_filenames" >> $GITHUB_OUTPUT
       - run: |
-          sudo snap install musescore
+          sudo snap info musescore
+          sudo snap install musescore --channel=3.6/stable
           sudo snap connect musescore:cups-control
       - name: Run conversion job
         run: xvfb-run -a musescore.mscore -j "$JOB_FILE"
