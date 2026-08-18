@@ -32,7 +32,7 @@ jobs:
       - name: Run conversion job
         run: xvfb-run -a musescore.mscore -j "$JOB_FILE"
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: build-artifacts
           path: |
@@ -132,7 +132,7 @@ jobs:
           find -iname '*.mwav' | sed 'p;s/\.mwav$/\.WAV/i' | xargs -rd '\n' -n 2 mv
           ps auxww | grep "Xvfb $DISPLAY" | grep -v 'grep' | awk '{print $2}' | xargs -r kill
       - name: Update artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: build-artifacts
           path: ./*.[Ww][Aa][Vv]
