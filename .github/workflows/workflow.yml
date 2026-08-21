@@ -37,7 +37,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: build-artifacts
+          name: musescore-artifacts
           path: |
             *.flac
             *.mid
@@ -65,7 +65,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v8
         with:
-          name: build-artifacts
+          name: musescore-artifacts
       # source: https://unix.stackexchange.com/a/259403
       - name: Generate chiptune version from MIDI
         run: |
@@ -137,7 +137,7 @@ jobs:
       - name: Update artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: build-artifacts
+          name: gxscc-artifacts
           path: ./*.[Ww][Aa][Vv]
   # source: https://stackoverflow.com/a/70716837
   release:
@@ -148,7 +148,12 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v8
         with:
-          name: build-artifacts
+          name: musescore-artifacts
+          path: artifacts
+      - name: Download artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: gxscc-artifacts
           path: artifacts
       - uses: actions/checkout@v7
         with:
